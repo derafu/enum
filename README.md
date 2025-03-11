@@ -1,5 +1,11 @@
 # Derafu: Enum - Yet Another List of Enumerations for PHP
 
+![GitHub last commit](https://img.shields.io/github/last-commit/derafu/enum/main)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/derafu/enum)
+![GitHub Issues](https://img.shields.io/github/issues-raw/derafu/enum)
+![Total Downloads](https://poser.pugx.org/derafu/enum/downloads)
+![Monthly Downloads](https://poser.pugx.org/derafu/enum/d/monthly)
+
 A PHP repository for global enumerations.
 
 ## Note on Enumerations
