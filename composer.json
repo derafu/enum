@@ -2,12 +2,12 @@
     "name": "derafu/enum",
     "description": "Derafu: Enum - Yet Another List of Enumerations for PHP",
     "type": "library",
-    "homepage": "https://derafu.org/enum",
+    "homepage": "https://www.derafu.dev/docs/standards/enum",
     "license": "MIT",
     "authors": [
         {
             "name": "Esteban De La Fuente Rubio / Derafu",
-            "homepage": "https://www.derafu.org"
+            "homepage": "https://www.derafu.dev"
         }
     ],
     "support": {
