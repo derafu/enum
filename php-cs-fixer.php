@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Derafu: Foundation - Base for Derafu's Projects.
+ * Derafu: Enum - Yet Another List of Enumerations for PHP.
  *
  * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.dev>
  * Licensed under the MIT License.
