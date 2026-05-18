@@ -93,9 +93,52 @@ interface StatusInterface
     public function getBtnClass(): string;
 
     /**
-     * Bootstrap Icons class name (requires bootstrap-icons).
+     * Icon classes.
      *
-     * @return string e.g. "bi-check-circle-fill"
+     * For example Font Awesome or Bootstrap Icons.
+     *
+     * @return string e.g. "fa-solid fa-circle-check"
      */
     public function getIcon(): string;
+
+    /**
+     * Returns true if this status represents a successful outcome.
+     */
+    public function isSuccess(): bool;
+
+    /**
+     * Returns true if this status represents an error or failure.
+     */
+    public function isError(): bool;
+
+    /**
+     * Returns true if this status represents a non-critical warning.
+     */
+    public function isWarning(): bool;
+
+    /**
+     * Returns true if this status represents an informational message.
+     */
+    public function isInfo(): bool;
+
+    /**
+     * Returns true if this status is decorative or has no semantic outcome.
+     *
+     * Covers primary, secondary, light, and dark in the default implementation.
+     */
+    public function isNeutral(): bool;
+
+    /**
+     * Returns true if this status has a positive connotation.
+     *
+     * Covers success and info in the default implementation.
+     */
+    public function isPositive(): bool;
+
+    /**
+     * Returns true if this status has a negative connotation.
+     *
+     * Covers danger and warning in the default implementation.
+     */
+    public function isNegative(): bool;
 }

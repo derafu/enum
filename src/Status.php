@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Derafu: Enum - Yet Another List of Enumerations for PHP.
  *
- * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.dev>
+ * Copyright (c) 2026 Esteban De La Fuente Rubio / Derafu <https://www.derafu.dev>
  * Licensed under the MIT License.
  * See LICENSE file for more details.
  */
@@ -139,19 +139,90 @@ enum Status: string implements StatusInterface
     }
 
     /**
+     * Font Awesome icon classes.
+     *
+     * User must add the fa-fw class if needed.
+     *
      * {@inheritDoc}
      */
     public function getIcon(): string
     {
         return match($this) {
-            Status::Success   => 'bi-check-circle-fill',
-            Status::Danger    => 'bi-x-circle-fill',
-            Status::Warning   => 'bi-exclamation-triangle-fill',
-            Status::Info      => 'bi-info-circle-fill',
-            Status::Primary   => 'bi-star-fill',
-            Status::Secondary => 'bi-circle-fill',
-            Status::Light     => 'bi-sun-fill',
-            Status::Dark      => 'bi-moon-fill',
+            Status::Success   => 'fa-solid fa-circle-check',
+            Status::Danger    => 'fa-solid fa-circle-xmark',
+            Status::Warning   => 'fa-solid fa-triangle-exclamation',
+            Status::Info      => 'fa-solid fa-circle-info',
+            Status::Primary   => 'fa-solid fa-star',
+            Status::Secondary => 'fa-solid fa-circle',
+            Status::Light     => 'fa-solid fa-sun',
+            Status::Dark      => 'fa-solid fa-moon',
         };
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isSuccess(): bool
+    {
+        return $this === Status::Success;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isError(): bool
+    {
+        return $this === Status::Danger;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isWarning(): bool
+    {
+        return $this === Status::Warning;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isInfo(): bool
+    {
+        return $this === Status::Info;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isNeutral(): bool
+    {
+        return in_array($this, [
+            Status::Primary,
+            Status::Secondary,
+            Status::Light,
+            Status::Dark,
+        ], strict: true);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isPositive(): bool
+    {
+        return in_array($this, [
+            Status::Success,
+            Status::Info,
+        ], strict: true);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isNegative(): bool
+    {
+        return in_array($this, [
+            Status::Danger,
+            Status::Warning,
+        ], strict: true);
     }
 }
