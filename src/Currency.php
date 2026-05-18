@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\Enum;
 
+use Derafu\Enum\Contract\CurrencyInterface;
+
 /**
  * Enum with, mainly, currencies in ISO 4217 standard.
  *
@@ -26,7 +28,7 @@ namespace Derafu\Enum;
  * @see https://www.iso.org/iso-4217-currency-codes.html
  * @see https://en.wikipedia.org/wiki/ISO_4217
  */
-enum Currency: string
+enum Currency: string implements CurrencyInterface
 {
     /**
      * Chilean pesos.
@@ -310,63 +312,6 @@ enum Currency: string
      * @var array<string, array<string, string>>
      */
     private const NAMES = [
-        // Currency names in Spanish.
-        'es' => [
-            self::CLP->value => 'Peso chileno',
-            self::CLF->value => 'Unidad de fomento de Chile',
-            self::UTM->value => 'Unidad tributaria mensual de Chile',
-            self::UTA->value => 'Unidad tributaria anual de Chile',
-            self::USD->value => 'Dólar estadounidense',
-            self::EUR->value => 'Euro',
-            self::BTC->value => 'Bitcoin',
-            self::ARS->value => 'Peso argentino',
-            self::GBP->value => 'Libra esterlina',
-            self::SEK->value => 'Corona sueca',
-            self::HKD->value => 'Dólar de Hong Kong',
-            self::ZAR->value => 'Rand sudafricano',
-            self::COP->value => 'Peso colombiano',
-            self::MXN->value => 'Peso mexicano',
-            self::VES->value => 'Bolívar venezolano',
-            self::SGD->value => 'Dólar de Singapur',
-            self::INR->value => 'Rupia india',
-            self::TWD->value => 'Nuevo dólar taiwanés',
-            self::AED->value => 'Dirham de Emiratos Árabes Unidos',
-            self::KRW->value => 'Won surcoreano',
-            self::PLN->value => 'Zloty polaco',
-            self::CZK->value => 'Corona checa',
-            self::HUF->value => 'Forint húngaro',
-            self::THB->value => 'Baht tailandés',
-            self::TRY->value => 'Lira turca',
-            self::MYR->value => 'Ringgit malayo',
-            self::RUB->value => 'Rublo ruso',
-            self::IDR->value => 'Rupia indonesia',
-            self::UAH->value => 'Grivna ucraniana',
-            self::ILS->value => 'Shekel israelí',
-            self::PHP->value => 'Peso filipino',
-            self::SAR->value => 'Riyal saudí',
-            self::PKR->value => 'Rupia pakistaní',
-            self::VND->value => 'Dong vietnamita',
-            self::EGP->value => 'Libra egipcia',
-            self::RON->value => 'Leu rumano',
-            self::ISK->value => 'Corona islandesa',
-            self::IRR->value => 'Rial iraní',
-            self::CRC->value => 'Colón costarricense',
-            self::PAB->value => 'Balboa panameño',
-            self::PYG->value => 'Guaraní paraguayo',
-            self::PEN->value => 'Sol peruano',
-            self::UYU->value => 'Peso uruguayo',
-            self::AUD->value => 'Dólar australiano',
-            self::BOB->value => 'Boliviano',
-            self::CNY->value => 'Yuan chino',
-            self::BRL->value => 'Real brasileño',
-            self::DKK->value => 'Corona danesa',
-            self::CAD->value => 'Dólar canadiense',
-            self::JPY->value => 'Yen japonés',
-            self::CHF->value => 'Franco suizo',
-            self::NOK->value => 'Corona noruega',
-            self::NZD->value => 'Dólar neozelandés',
-            self::XXX->value => 'Sin divisa',
-        ],
         // Currency names in English.
         'en' => [
             self::CLP->value => 'Chilean Peso',
@@ -423,6 +368,63 @@ enum Currency: string
             self::NOK->value => 'Norwegian Krone',
             self::NZD->value => 'New Zealand Dollar',
             self::XXX->value => 'No Currency',
+        ],
+        // Currency names in Spanish.
+        'es' => [
+            self::CLP->value => 'Peso chileno',
+            self::CLF->value => 'Unidad de fomento de Chile',
+            self::UTM->value => 'Unidad tributaria mensual de Chile',
+            self::UTA->value => 'Unidad tributaria anual de Chile',
+            self::USD->value => 'Dólar estadounidense',
+            self::EUR->value => 'Euro',
+            self::BTC->value => 'Bitcoin',
+            self::ARS->value => 'Peso argentino',
+            self::GBP->value => 'Libra esterlina',
+            self::SEK->value => 'Corona sueca',
+            self::HKD->value => 'Dólar de Hong Kong',
+            self::ZAR->value => 'Rand sudafricano',
+            self::COP->value => 'Peso colombiano',
+            self::MXN->value => 'Peso mexicano',
+            self::VES->value => 'Bolívar venezolano',
+            self::SGD->value => 'Dólar de Singapur',
+            self::INR->value => 'Rupia india',
+            self::TWD->value => 'Nuevo dólar taiwanés',
+            self::AED->value => 'Dirham de Emiratos Árabes Unidos',
+            self::KRW->value => 'Won surcoreano',
+            self::PLN->value => 'Zloty polaco',
+            self::CZK->value => 'Corona checa',
+            self::HUF->value => 'Forint húngaro',
+            self::THB->value => 'Baht tailandés',
+            self::TRY->value => 'Lira turca',
+            self::MYR->value => 'Ringgit malayo',
+            self::RUB->value => 'Rublo ruso',
+            self::IDR->value => 'Rupia indonesia',
+            self::UAH->value => 'Grivna ucraniana',
+            self::ILS->value => 'Shekel israelí',
+            self::PHP->value => 'Peso filipino',
+            self::SAR->value => 'Riyal saudí',
+            self::PKR->value => 'Rupia pakistaní',
+            self::VND->value => 'Dong vietnamita',
+            self::EGP->value => 'Libra egipcia',
+            self::RON->value => 'Leu rumano',
+            self::ISK->value => 'Corona islandesa',
+            self::IRR->value => 'Rial iraní',
+            self::CRC->value => 'Colón costarricense',
+            self::PAB->value => 'Balboa panameño',
+            self::PYG->value => 'Guaraní paraguayo',
+            self::PEN->value => 'Sol peruano',
+            self::UYU->value => 'Peso uruguayo',
+            self::AUD->value => 'Dólar australiano',
+            self::BOB->value => 'Boliviano',
+            self::CNY->value => 'Yuan chino',
+            self::BRL->value => 'Real brasileño',
+            self::DKK->value => 'Corona danesa',
+            self::CAD->value => 'Dólar canadiense',
+            self::JPY->value => 'Yen japonés',
+            self::CHF->value => 'Franco suizo',
+            self::NOK->value => 'Corona noruega',
+            self::NZD->value => 'Dólar neozelandés',
+            self::XXX->value => 'Sin divisa',
         ],
     ];
 
@@ -564,9 +566,7 @@ enum Currency: string
     ];
 
     /**
-     * Returns the currency code in ISO 4217 standard.
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getCode(): string
     {
@@ -574,12 +574,9 @@ enum Currency: string
     }
 
     /**
-     * Returns the currency name.
-     *
-     * @param string $language
-     * @return string
+     * {@inheritDoc}
      */
-    public function getName(string $language = 'es'): string
+    public function getName(string $language = 'en'): string
     {
         $name = self::NAMES[$language][$this->value] ?? null;
 
@@ -595,9 +592,7 @@ enum Currency: string
     }
 
     /**
-     * Returns the currency symbol.
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getSymbol(): string
     {
@@ -605,9 +600,7 @@ enum Currency: string
     }
 
     /**
-     * Returns the number of decimals of the currency.
-     *
-     * @return int
+     * {@inheritDoc}
      */
     public function getDecimals(): int
     {
@@ -615,9 +608,7 @@ enum Currency: string
     }
 
     /**
-     * Returns the decimal separator that the currency uses.
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getDecimalSeparator(): string
     {
@@ -625,9 +616,7 @@ enum Currency: string
     }
 
     /**
-     * Returns the thousands separator that the currency uses.
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getThousandsSeparator(): string
     {
@@ -635,11 +624,7 @@ enum Currency: string
     }
 
     /**
-     * Validates if an amount is correct for the currency according to its
-     * decimals.
-     *
-     * @param int|float $amount
-     * @return bool
+     * {@inheritDoc}
      */
     public function isValidAmount(int|float $amount): bool
     {
@@ -650,10 +635,7 @@ enum Currency: string
     }
 
     /**
-     * Approximates the amount according to the decimals that the currency has.
-     *
-     * @param int|float $amount
-     * @return int|float
+     * {@inheritDoc}
      */
     public function round(int|float $amount): int|float
     {
@@ -665,13 +647,7 @@ enum Currency: string
     }
 
     /**
-     * Formats the amount of a currency as a string.
-     *
-     * Rounds the amount to the decimals of the currency and formats it using
-     * the decimal separator and thousands separator of the currency.
-     *
-     * @param int|float $amount
-     * @return string
+     * {@inheritDoc}
      */
     public function format(int|float $amount): string
     {
@@ -686,13 +662,7 @@ enum Currency: string
     }
 
     /**
-     * Renders the amount of the currency using its template.
-     *
-     * Returns a string with the approximate amount to the decimals of the
-     * currency and the symbol in the format that the currency uses.
-     *
-     * @param int|float $amount
-     * @return string
+     * {@inheritDoc}
      */
     public function render(int|float $amount): string
     {
@@ -708,10 +678,7 @@ enum Currency: string
     }
 
     /**
-     * Returns the template that should be used to render an amount of the
-     * currency.
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getTemplate(): string
     {
@@ -719,9 +686,7 @@ enum Currency: string
     }
 
     /**
-     * Returns an array with the complete information of the currency.
-     *
-     * @return array<string, mixed>
+     * {@inheritDoc}
      */
     public function toArray(): array
     {

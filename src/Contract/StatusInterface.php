@@ -1,0 +1,101 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Derafu: Enum - Yet Another List of Enumerations for PHP.
+ *
+ * Copyright (c) 2026 Esteban De La Fuente Rubio / Derafu <https://www.derafu.dev>
+ * Licensed under the MIT License.
+ * See LICENSE file for more details.
+ */
+
+namespace Derafu\Enum\Contract;
+
+/**
+ * Contract for status enums that carry Bootstrap 5.3 visual context.
+ *
+ * Implement this interface in your own backed enum to make it compatible with
+ * any component that renders status-aware UI (alerts, badges, buttons, etc.)
+ * without depending on the default Status enum.
+ *
+ * All getters follow the get* convention, which means they are also accessible
+ * in Twig templates without the prefix: {{ status.color }}, {{ status.icon }}.
+ *
+ * @example
+ *   enum OrderStatus: string implements StatusInterface
+ *   {
+ *       case Pending  = 'pending';
+ *       case Shipped  = 'shipped';
+ *       case Returned = 'returned';
+ *
+ *       public function getLabel(): string { ... }
+ *       public function getColor(): string { ... }
+ *       // ...
+ *   }
+ */
+interface StatusInterface
+{
+    /**
+     * Human-readable label for the status.
+     *
+     * @return string e.g. "Success", "Error", "Pending"
+     */
+    public function getLabel(): string;
+
+    /**
+     * Bootstrap 5.3 contextual color name.
+     *
+     * @return string One of: primary, secondary, success, danger, warning, info, light, dark.
+     */
+    public function getColor(): string;
+
+    /**
+     * Bootstrap text utility class.
+     *
+     * @return string e.g. "text-success"
+     */
+    public function getTextClass(): string;
+
+    /**
+     * Bootstrap background utility class.
+     *
+     * @return string e.g. "bg-success"
+     */
+    public function getBgClass(): string;
+
+    /**
+     * Bootstrap border utility class.
+     *
+     * @return string e.g. "border-success"
+     */
+    public function getBorderClass(): string;
+
+    /**
+     * Full Bootstrap Alert component classes.
+     *
+     * @return string e.g. "alert alert-success"
+     */
+    public function getAlertClass(): string;
+
+    /**
+     * Full Bootstrap Badge component classes.
+     *
+     * @return string e.g. "badge bg-success"
+     */
+    public function getBadgeClass(): string;
+
+    /**
+     * Full Bootstrap Button component classes.
+     *
+     * @return string e.g. "btn btn-success"
+     */
+    public function getBtnClass(): string;
+
+    /**
+     * Bootstrap Icons class name (requires bootstrap-icons).
+     *
+     * @return string e.g. "bi-check-circle-fill"
+     */
+    public function getIcon(): string;
+}
