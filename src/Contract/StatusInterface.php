@@ -37,11 +37,23 @@ namespace Derafu\Enum\Contract;
 interface StatusInterface
 {
     /**
+     * Returns the status code (e.g. "success", "error", "pending").
+     */
+    public function getCode(): string;
+
+    /**
      * Human-readable label for the status.
      *
      * @return string e.g. "Success", "Error", "Pending"
      */
     public function getLabel(): string;
+
+    /**
+     * Returns the flash type for the status.
+     *
+     * @return string e.g. "success", "error", "warning", "info"
+     */
+    public function getFlashType(): string;
 
     /**
      * Bootstrap 5.3 contextual color name.

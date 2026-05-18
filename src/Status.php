@@ -68,6 +68,14 @@ enum Status: string implements StatusInterface
     /**
      * {@inheritDoc}
      */
+    public function getCode(): string
+    {
+        return $this->value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getLabel(): string
     {
         return match($this) {
@@ -80,6 +88,14 @@ enum Status: string implements StatusInterface
             Status::Light     => 'Light',
             Status::Dark      => 'Dark',
         };
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFlashType(): string
+    {
+        return $this->value;
     }
 
     /**
