@@ -49,11 +49,12 @@ interface StatusInterface
     public function getLabel(): string;
 
     /**
-     * Returns the flash type for the status.
+     * Returns the flash message type for the status.
      *
-     * @return string e.g. "success", "error", "warning", "info"
+     * @return string|null e.g. "success", "error", "warning", "info", or null
+     * when the status has no equivalent flash message (the neutral ones).
      */
-    public function getFlashType(): string;
+    public function getFlashType(): ?string;
 
     /**
      * Bootstrap 5.3 contextual color name.

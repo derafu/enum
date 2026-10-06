@@ -75,6 +75,10 @@ enum Status: string implements StatusInterface
 
     /**
      * {@inheritDoc}
+     *
+     * Here it is the name of the Bootstrap color, in English: a technical
+     * label, not text for the end user. An enum with its own cases can return
+     * the text that its application shows.
      */
     public function getLabel(): string
     {
@@ -93,9 +97,18 @@ enum Status: string implements StatusInterface
     /**
      * {@inheritDoc}
      */
-    public function getFlashType(): string
+    public function getFlashType(): ?string
     {
-        return $this->value;
+        return match ($this) {
+            Status::Success => 'success',
+            Status::Danger => 'error',
+            Status::Warning => 'warning',
+            Status::Info => 'info',
+            Status::Primary,
+            Status::Secondary,
+            Status::Light,
+            Status::Dark => null,
+        };
     }
 
     /**

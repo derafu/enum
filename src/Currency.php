@@ -629,9 +629,15 @@ enum Currency: string implements CurrencyInterface
     public function isValidAmount(int|float $amount): bool
     {
         $decimals = $this->getDecimals();
-        $factor = pow(10, $decimals);
+        $rounded = round((float) $amount, $decimals);
 
-        return (floor($amount * $factor) === $amount * $factor);
+        // With a tolerance, because binary floats are not exact (1.15 is
+        // 1.149999999999999911...), so a comparison that is exact says that
+        // valid amounts are not. It is a millionth of the smallest unit of
+        // the currency, or the error of the float for big amounts.
+        $tolerance = max(10 ** -$decimals * 1e-6, abs($amount) * 1e-12);
+
+        return abs($amount - $rounded) < $tolerance;
     }
 
     /**
@@ -670,11 +676,13 @@ enum Currency: string implements CurrencyInterface
 
         $formatedAmount = $this->format($amount);
 
-        return str_replace(
+        // The trim() is for the currencies without symbol, so the space of the
+        // template does not stay at one end.
+        return trim(str_replace(
             ['{{symbol}}', '{{amount}}'],
             [$this->getSymbol(), $formatedAmount],
             $template
-        );
+        ));
     }
 
     /**
